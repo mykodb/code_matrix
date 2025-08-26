@@ -1,0 +1,75 @@
+# neoforge.mods.toml
+# TOML v0.5.0
+# 替换声明：loader_version_range | mod_id | mod_version | neoforge_version_range | minecraft_version_range
+
+# 模组加载器
+modLoader = "kotlinforforge"
+loaderVersion = "${loader_version_range}"
+
+# 许可证
+license = "MIT License"
+
+### 模组信息 (必须)
+[[mods]]
+# 模组ID
+modId = "${mod_id}"
+# 模组版本
+version = "${mod_version}"
+# 模组名称
+displayName = "Code Matrix"
+# 作者
+authors = "mykodb"
+# 模组描述
+description = ''' '''
+# 致谢信息 或 版权声明 (可选)
+credits = ""
+# 用于查询此模组更新 (可选)
+updateJSONURL="https://github.com/mykodb/code_matrix/blob/master/updates.json"
+# 该模组的“主页” (可选)
+displayURL="https://github.com/mykodb/code_matrix/"
+# 包含要显示的徽标的文件名 (可选) [src/main/resources/code_matrix.png,编译后应该在jar的根目录]
+logoFile = "code_matrix.png"
+
+### 高级配置
+
+#[[mixins]]
+#config="${mod_id}.mixins.json"
+
+#[[accessTransformers]]
+#file="META-INF/accesstransformer.cfg"
+
+# coremods配置无法修改文件路径，默认"META-INF/coremods.json"
+
+
+#### 模组依赖 配置
+
+## 参考配置
+# [[dependencies."${ mod_id }"]]
+# (必须) 模组ID
+# modId = "modid"
+# (必须) 依赖类型
+# type = "required" 必须 | "required" 可选 | "incompatible" 不兼容 | "discouraged" 不建议
+# (必须) 模组版本支持范围
+# versionRange = "versionRange"
+# (可选) 依赖加载顺序
+# ordering = "NONE" 无 | "BEFORE" 模组依赖项之前加载 | "AFTER" 模组依赖项之后加载
+# (可选) 依赖作用区
+# side = "BOTH" 全部 | "CLIENT" 客户端 | "SERVER" 服务器
+
+[[dependencies."${mod_id}"]] #optional
+modId = "neoforge"
+type = "required"
+versionRange = "${neoforge_version_range}" #需要替换
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies."${mod_id}"]]
+modId = "minecraft"
+type = "required"
+versionRange = "${minecraft_version_range}" #需要替换
+ordering = "NONE"
+side = "BOTH"
+
+## 依赖openGl版本 (可选)
+#[features."${mod_id}"]
+#openGLVersion="[3.2,)"
